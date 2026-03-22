@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SouthStar Route Changes — GBODS</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+--bg:#111416;
+--bg-raised:#1a1e22;
+--bg-elevated:#21262d;
+--bg-hover:#252b32;
+--border:#2e3540;
+--border-mid:#3a4250;
+--text:#d0d7de;
+--text-dim:#8b949e;
+--text-faint:#545d68;
+--accent:#5b9bd5;
+--accent-dim:#3d6fa3;
+--green-bg:#1a3a2a;
+--green-txt:#56a87a;
+--red-bg:#3a1a1a;
+--red-txt:#e05c5c;
+--amber-bg:#352610;
+--amber-txt:#c9893a;
+--blue-bg:#152032;
+--blue-txt:#5b9bd5;
+--body-font:'Noto Sans',sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body-font);background:var(--bg);color:var(--text)}
+
+a{color:var(--accent)}
+a:hover{color:#7fb3e0}
+
+/* Cookie banner */
+
+.cookie-banner{background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:12px 0;font-size:.875rem;color:var(--text-dim)}
+.cookie-inner{max-width:960px;margin:0 auto;padding:0 15px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.cookie-btn{font-size:.875rem;font-weight:700;padding:6px 14px;border:2px solid var(--border-mid);background:var(--bg-raised);color:var(--text);cursor:pointer}
+.cookie-btn.accept{background:var(--green-bg);color:var(--green-txt);border-color:var(--green-txt)}
+
+/* Top bar */
+
+.top-bar{background:#0d1117;padding:10px 0;border-bottom:1px solid var(--border)}
+.top-bar-inner{max-width:960px;margin:0 auto;padding:0 15px;display:flex;align-items:center;justify-content:space-between}
+.gbods-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+
+.logo-badge{background:var(--accent);color:#fff;padding:4px 10px;display:flex;flex-direction:column}
+.logo-badge .line1{font-size:.6rem;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.logo-badge .line2{font-size:1rem;font-weight:800}
+
+.logo-div{width:1px;height:36px;background:var(--border-mid)}
+
+.logo-text{color:var(--text-dim);font-size:.75rem;line-height:1.4}
+.logo-text strong{display:block;font-size:.82rem;color:var(--text)}
+
+.top-bar-links{display:flex;gap:20px}
+.top-bar-links a{color:var(--text-dim);font-size:.8rem;text-decoration:none}
+.top-bar-links a:hover{color:var(--text)}
+
+/* Header */
+
+.service-header{background:var(--bg-raised);border-bottom:4px solid var(--accent);padding:10px 0}
+.service-header-inner{max-width:960px;margin:0 auto;padding:0 15px;display:flex;align-items:center;justify-content:space-between}
+.service-name{font-size:1rem;font-weight:700;color:var(--text);text-decoration:none}
+
+/* Phase banner */
+
+.phase-banner{background:var(--bg-elevated);border-bottom:1px solid var(--border);padding:8px 0}
+.phase-inner{max-width:960px;margin:0 auto;padding:0 15px;display:flex;align-items:center;gap:10px;font-size:.875rem}
+.phase-tag{background:var(--accent-dim);color:#fff;font-size:.7rem;font-weight:700;padding:2px 8px;text-transform:uppercase}
+
+/* Main */
+
+.container{max-width:960px;margin:0 auto;padding:0 15px}
+main{padding:30px 0 60px}
+
+.breadcrumb{font-size:.875rem;margin-bottom:20px;display:flex;gap:6px;color:var(--text-faint)}
+.breadcrumb a{color:var(--accent)}
+
+h1.page-title{font-size:2rem;font-weight:700;margin-bottom:8px}
+.page-lede{font-size:1.0625rem;margin-bottom:24px;max-width:640px;color:var(--text-dim)}
+
+.inset-text{border-left:5px solid var(--accent-dim);padding:12px 15px;margin-bottom:24px;background:var(--bg-elevated);color:var(--text-dim)}
+
+.toolbar{margin-bottom:16px}
+.filter-tag{padding:4px 12px;border:2px solid var(--border);font-size:.8125rem;font-weight:600;background:var(--bg-raised);color:var(--text-dim);cursor:pointer}
+.filter-tag.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Table */
+
+.table-wrap{overflow-x:auto;border:1px solid var(--border)}
+
+.govuk-table{width:100%;border-collapse:collapse;font-size:.9375rem}
+
+.govuk-table thead th{
+background:var(--bg-elevated);
+font-size:.8125rem;
+text-transform:uppercase;
+padding:12px 14px;
+border-bottom:2px solid var(--accent-dim)
+}
+
+.govuk-table tbody td{
+padding:14px;
+background:var(--bg-raised)
+}
+
+.govuk-table tbody tr:hover td{background:var(--bg-hover)}
+
+.route-num{
+background:var(--accent-dim);
+color:#fff;
+font-weight:700;
+padding:4px 10px;
+display:inline-block
+}
+
+.status-tag{
+font-size:.72rem;
+font-weight:700;
+padding:3px 9px
+}
+
+.tag-confirmed{background:var(--green-bg);color:var(--green-txt)}
+.tag-upcoming{background:var(--blue-bg);color:var(--blue-txt)}
+.tag-cancelled{background:var(--red-bg);color:var(--red-txt)}
+
+.change-text{font-size:.875rem;color:var(--text-dim)}
+
+footer{
+background:#0d1117;
+padding:28px 0;
+border-top:1px solid var(--border);
+color:var(--text-dim)
+}
+
+.footer-inner{max-width:960px;margin:0 auto;padding:0 15px}
+</style>
+</head>
+
+<body>
+
+<div class="cookie-banner" id="cookieBanner">
+<div class="cookie-inner">
+<p>We use some essential cookies to make this service work.</p>
+<div>
+<button class="cookie-btn accept" onclick="document.getElementById('cookieBanner').style.display='none'">Accept</button>
+<button class="cookie-btn" onclick="document.getElementById('cookieBanner').style.display='none'">Reject</button>
+</div>
+</div>
+</div>
+
+<div class="top-bar">
+<div class="top-bar-inner">
+
+<a class="gbods-logo">
+<div class="logo-badge">
+<span class="line1">GoBus Open Data</span>
+<span class="line2">GBODS</span>
+</div>
+
+<div class="logo-div"></div>
+
+<div class="logo-text">
+<strong>GoBus Open Data Service</strong>
+Bus data for passengers & developers
+</div>
+</a>
+
+<div class="top-bar-links">
+<a>Find data</a>
+<a>Guidance</a>
+</div>
+
+</div>
+</div>
+
+<div class="service-header">
+<div class="service-header-inner">
+<a class="service-name">SouthStar Bus Information</a>
+</div>
+</div>
+
+<div class="phase-banner">
+<div class="phase-inner">
+<span class="phase-tag">Beta</span>
+<p>This is a new service — your feedback will help us improve it.</p>
+</div>
+</div>
+
+<main>
+<div class="container">
+
+<nav class="breadcrumb">
+<a>Home</a> › <a>SouthStar</a> › <span>Route Changes</span>
+</nav>
+
+<h1 class="page-title">Bus Route Changes</h1>
+
+<p class="page-lede">
+View upcoming and recent changes to SouthStar bus routes.
+</p>
+
+<div class="inset-text">
+<strong>Important:</strong> Timetable and route changes are normally announced at least 42 days before they take effect.
+</div>
+
+<div class="toolbar">
+<button class="filter-tag active" onclick="setFilter('all',this)">All</button>
+<button class="filter-tag" onclick="setFilter('upcoming',this)">Upcoming</button>
+<button class="filter-tag" onclick="setFilter('confirmed',this)">Live</button>
+<button class="filter-tag" onclick="setFilter('cancelled',this)">Cancelled</button>
+</div>
+
+<div class="table-wrap">
+<table class="govuk-table">
+<thead>
+<tr>
+<th>Route No.</th>
+<th>Destinations</th>
+<th>Changes Effective</th>
+<th>Details of Changes</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+</div>
+
+</div>
+</main>
+
+<footer>
+<div class="footer-inner">
+<p>GoBus Open Data Service</p>
+<p>Data available under the Open Government Licence v3.0.</p>
+</div>
+</footer>
+
+<script>
+
+let entries=[
+{route:'2',destinations:'Newport → Godshill → Whitley Bank → Shanklin → Sandown → Ryde',effectiveDate:'2026-03-28',details:'Daytime timetable to be increased to every 30 minutes to improve connections across the East of the island.',status:'upcoming'},
+{route:'3',destinations:'Newport → Godshill → Ventnor → Shanklin → Sandown → Ryde',effectiveDate:'2026-03-28',details:'Daytime timetable to be increased to every 30 minutes to improve connections across the East of the island.',status:'upcoming'},
+{route:'8A',destinations:'Newport → Pan Estate → Arreton → Winford → Sandown',effectiveDate:'2026-03-28',details:'Reintroduce the 20:10 to Sandown and 21:08 to Newport Departures.',status:'cancelled'},
+{route:'1A',destinations:'Newport → Northwood → Park & Ride → Cowes',effectiveDate:'2026-08-01',details:'Frequency temporarily increased to every 12 minutes from 1 - 7 August due to Cowes Week.',status:'upcoming'},
+{route:'1B',destinations:'Newport → Northwood → Park & Ride → Cowes',effectiveDate:'2026-08-01',details:'Frequency temporarily increased to every 12 minutes from 1 - 7 August due to Cowes Week.',status:'upcoming'}
+]
+
+let filter='all'
+
+const statusMap={
+confirmed:['tag-confirmed','Live'],
+upcoming:['tag-upcoming','Upcoming'],
+cancelled:['tag-cancelled','Cancelled']
+}
+
+function fmtDate(d){
+return new Date(d+'T12:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})
+}
+
+function render(){
+
+let list=filter==='all'?entries:entries.filter(e=>e.status===filter)
+
+const body=document.getElementById('tableBody')
+
+body.innerHTML=list.map(e=>{
+
+const [sc,sl]=statusMap[e.status]
+
+return `<tr>
+<td><span class="route-num">${e.route}</span></td>
+<td>${e.destinations}</td>
+<td>${fmtDate(e.effectiveDate)}</td>
+<td class="change-text">${e.details}</td>
+<td><span class="status-tag ${sc}">${sl}</span></td>
+</tr>`
+
+}).join('')
+}
+
+function setFilter(f,btn){
+
+filter=f
+
+document.querySelectorAll('.filter-tag').forEach(b=>b.classList.remove('active'))
+btn.classList.add('active')
+
+render()
+}
+render()
+</script>
+</body>
+</html>
